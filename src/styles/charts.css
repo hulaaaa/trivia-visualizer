@@ -1,0 +1,133 @@
+.chart-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 4px rgba(2,6,23,0.06);
+    border: 1px solid rgba(15,23,42,0.04);
+}
+
+.chart-header {
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:6px;
+}
+.chart-header h3 {
+    margin:0;
+    font-size:15px;
+    font-weight:600;
+}
+.chart-sub {
+    color:#6b7280;
+    font-size:12px;
+}
+
+
+
+.chart-empty {
+    padding: 24px;
+    color: #6b7280;
+    text-align: center;
+}
+
+.category-legend {
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    list-style:none;
+    padding:8px 4px 0 4px;
+    margin:0;
+}
+
+
+.category-legend__btn {
+    display: inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:8px 10px;
+    border-radius:8px;
+    border:1px solid rgba(15,23,42,0.04);
+    background: #fff;
+    cursor: pointer;
+    min-width: 200px;
+    text-align: left;
+    transition: box-shadow .08s ease, transform .06s ease;
+    border-left: 6px solid transparent;
+}
+.category-legend__btn:hover {
+    box-shadow: 0 4px 12px rgba(2,6,23,0.06);
+    transform: translateY(-1px);
+}
+.category-legend__btn.active {
+    background: rgba(255,127,14,0.06);
+    border-color: rgba(255,127,14,0.16);
+}
+
+.legend-dot {
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    display:inline-block;
+    margin-left:2px;
+    margin-right:4px;
+}
+
+.difficulty-legend {
+    display:flex;
+    gap:8px;
+    list-style:none;
+    padding:8px 4px 0 4px;
+    margin:0;
+    justify-content:flex-start;
+    flex-wrap:wrap;
+}
+
+
+
+.difficulty-legend__btn {
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 10px;
+    border-radius:8px;
+    border:1px solid rgba(15,23,42,0.04);
+    background:#fff;
+    cursor:pointer;
+    min-width:140px;
+    transition: box-shadow .08s ease, transform .06s ease;
+    border-left: 6px solid transparent;
+}
+.difficulty-legend__btn:hover {
+    box-shadow: 0 6px 18px rgba(2,6,23,0.06);
+    transform: translateY(-1px);
+}
+.difficulty-legend__btn.active {
+    background: rgba(255,127,14,0.06);
+    border-color: rgba(255,127,14,0.12);
+}
+
+.difficulty-legend .legend-dot {
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    display:inline-block;
+}
+.difficulty-legend .legend-label {
+    font-size:13px;
+    color:#111827;
+    text-transform:capitalize;
+}
+.difficulty-legend .legend-count {
+    margin-left:auto;
+    color:#6b7280;
+    font-size:13px;
+    padding-left:8px;
+}
+.difficulty-legend .legend-pct {
+    color:#9ca3af;
+    font-size:12px;
+    margin-left:6px;
+}
+

@@ -1,0 +1,21 @@
+.controls {
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:16px;
+    flex-wrap:wrap;
+}
+.controls__left {
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+.controls__dropdown {
+    min-width:240px;
+}
+.controls__meta {
+    margin-left:auto;
+    display:flex; gap:8px;
+    font-size:13px;
+    color:var(--muted);
+}

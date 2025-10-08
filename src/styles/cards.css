@@ -1,0 +1,135 @@
+.qcard {
+    background: #fff;
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 2px rgba(2,6,23,0.06);
+    border: 1px solid rgba(15,23,42,0.04);
+    transition: transform .06s ease, box-shadow .12s ease;
+}
+
+.qcard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(2,6,23,0.08);
+}
+
+.qcard__body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.qcard__header {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.qcard__title {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #111827;
+    margin: 0;
+    font-weight: 600;
+    max-width: 78%;
+    word-break: break-word;
+}
+
+.qcard__meta {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    justify-self: flex-end;
+    flex-wrap: wrap;
+}
+
+
+.qcard__tag {
+    background: #eef2ff;
+    color: #0f172a;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    border: 1px solid rgba(15,23,42,0.04);
+    white-space: nowrap;
+}
+
+.qcard__tag--muted {
+    background: #f3f4f6;
+    color: #374151;
+}
+
+
+.qcard__controls {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
+.qcard__btn {
+    background: transparent;
+    border: 1px solid rgba(15,23,42,0.06);
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    color: #0f172a;
+    transition: background .08s ease, border-color .08s ease;
+}
+.qcard__btn:hover {
+    background: rgba(79,70,229,0.04);
+    border-color: rgba(79,70,229,0.12);
+}
+
+
+.qcard__answers-wrapper {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .22s ease;
+}
+.qcard__answers-wrapper.open {
+    max-height: 1000px;
+}
+
+.qcard__answers {
+    margin-top: 8px;
+    padding: 10px;
+    border-radius: 6px;
+    background: #ffffff;
+    border: 1px solid rgba(15,23,42,0.03);
+    color: #374151;
+}
+
+.qcard__answers ol {
+    margin: 6px 0;
+    padding-left: 18px;
+}
+
+.qcard__answers li {
+    margin-bottom: 6px;
+    line-height: 1.45;
+    font-size: 14px;
+}
+
+.qcard__answer--correct {
+    background: rgba(34,197,94,0.06);
+    padding: 4px 6px;
+    border-radius: 4px;
+}
+
+.qcard__correct {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #065f46;
+}
+
+
+
+@media (max-width: 720px) {
+    .qcard__header { flex-direction: column; align-items: stretch; }
+    .qcard__title { max-width: 100%; }
+    .qcard__meta { margin-top: 8px; }
+}
