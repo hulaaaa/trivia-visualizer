@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from "@jetbrains/ring-ui-built/components/button/button";
 import Text from "@jetbrains/ring-ui-built/components/text/text";
-import Select, {type SelectItem, type SelectProps} from "@jetbrains/ring-ui-built/components/select/select";
+import Select, { type SingleSelectProps, type SelectItem } from "@jetbrains/ring-ui-built/components/select/select";
 
 export interface RingUISelectData {
     key: string;
@@ -18,32 +18,31 @@ interface ControlsProps {
 }
 
 const toSelectData = (cats: string[], placeholder: string): RingUISelectData[] => {
-    const data: RingUISelectData[] = [{key: '', label: placeholder}];
-    cats.forEach(c => data.push({key: c, label: c}));
+    const data: RingUISelectData[] = [{ key: '', label: placeholder }];
+    cats.forEach(c => data.push({ key: c, label: c }));
     return data;
 };
 
-type CategorySelectProps = SelectProps<RingUISelectData>;
-const TypedSelect = Select as unknown as React.FC<CategorySelectProps>;
+type CategorySelectProps = SingleSelectProps<RingUISelectData>;
 
-
-const Controls: React.FC<ControlsProps> = ({categories, selectedCategory, onSelectCategory, onReset, totalCount, filteredCount}) => {
+const Controls: React.FC<ControlsProps> = ({ categories, selectedCategory, onSelectCategory, onReset, totalCount, filteredCount }) => {
     const placeholderLabel = "All categories";
     const selectData = toSelectData(categories, placeholderLabel);
+
     const selectedItem: SelectItem<RingUISelectData> | null = selectedCategory
-        ? {key: selectedCategory, label: selectedCategory}
+        ? { key: selectedCategory, label: selectedCategory }
         : null;
 
-    const handleSelectChange: CategorySelectProps['onChange'] = (selected: SelectItem<RingUISelectData> | null) => {
+    const handleSelectChange: CategorySelectProps['onChange'] = (selected) => {
         const selectedKey = selected ? selected.key : null;
         onSelectCategory(selectedKey === '' ? null : selectedKey);
     };
 
     return (
-        <div className="controls" style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px', borderBottom: '1px solid #ccc'}}>
-            <div className="controls__left" style={{display: 'flex', alignItems: 'center'}}>
-                <div className="controls__dropdown" style={{minWidth: '240px'}}>
-                    <TypedSelect
+        <div className="controls" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px', borderBottom: '1px solid #ccc' }}>
+            <div className="controls__left" style={{ display: 'flex', alignItems: 'center' }}>
+                <div className="controls__dropdown" style={{ minWidth: '240px' }}>
+                    <Select<RingUISelectData>
                         data={selectData}
                         selected={selectedItem}
                         onChange={handleSelectChange}
@@ -54,13 +53,13 @@ const Controls: React.FC<ControlsProps> = ({categories, selectedCategory, onSele
                 <Button
                     onClick={onReset}
                     danger={true}
-                    style={{marginLeft: 8}}
+                    style={{ marginLeft: 8 }}
                 >
                     Reset
                 </Button>
             </div>
 
-            <div className="controls__meta" style={{display: 'flex', gap: '20px', fontSize: '0.9em', color: '#555'}}>
+            <div className="controls__meta" style={{ display: 'flex', gap: '20px', fontSize: '0.9em', color: '#555' }}>
                 <Text>Total: {totalCount}</Text>
                 <Text>Show: {filteredCount}</Text>
             </div>

@@ -27,17 +27,18 @@ const CategoryChart: React.FC<CategoryChartProps> = ({ questions, onSelectCatego
     }, [questions]);
 
 
-    const tooltipFormatter = (value: any) => {
+    const tooltipFormatter = (value: never) => {
         const count = Number(value ?? 0);
         const pct = total > 0 ? ((count / total) * 100).toFixed(1) : '0.0';
         return `${count} question${count !== 1 ? 's' : ''} • ${pct}%`;
     };
 
 
-    const handleBarClick = (payloadOrEvent: any) => {
+    const handleBarClick = (payloadOrEvent: { category: never; payload: { category: never; }; }) => {
         const category = payloadOrEvent?.category ?? payloadOrEvent?.payload?.category ?? null;
         onSelectCategory(category ?? null);
     };
+
 
     return (
         <div className="chart-card category-chart" role="region" aria-label="Questions by category">
@@ -69,7 +70,7 @@ const CategoryChart: React.FC<CategoryChartProps> = ({ questions, onSelectCatego
                                 <Tooltip formatter={tooltipFormatter} />
                                 <Bar
                                     dataKey="count"
-                                    onClick={handleBarClick}
+                                    onClick={()=>handleBarClick}
                                     isAnimationActive={true}
                                 >
                                     {data.map((entry, index) => {

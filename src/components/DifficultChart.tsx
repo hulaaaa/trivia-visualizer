@@ -11,6 +11,12 @@ interface Props {
     onSelectDifficulty?: (difficulty: 'easy' | 'medium' | 'hard' | null) => void;
 }
 
+
+interface HandleSliceClickParams {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    payloadOrEvent: any;
+}
+
 const DifficultyChart: React.FC<Props> = ({ questions, activeDifficulty = null, onSelectDifficulty }) => {
     const { data, total } = useMemo(() => {
         const counts: Record<'easy' | 'medium' | 'hard', number> = { easy: 0, medium: 0, hard: 0 };
@@ -27,13 +33,13 @@ const DifficultyChart: React.FC<Props> = ({ questions, activeDifficulty = null, 
         return { data: arr, total: tot };
     }, [questions]);
 
-    const tooltipFormatter = (value: any) => {
+    const tooltipFormatter = (value: never) => {
         const count = Number(value ?? 0);
         const pct = total > 0 ? ((count / total) * 100).toFixed(1) : '0.0';
         return `${count} question${count !== 1 ? 's' : ''} • ${pct}%`;
     };
 
-    const handleSliceClick = (payloadOrEvent: any) => {
+    const handleSliceClick = ({payloadOrEvent}: HandleSliceClickParams) => {
         const category = payloadOrEvent?.name ?? payloadOrEvent?.payload?.name ?? null;
         if (!onSelectDifficulty) return;
         if (!category) return;
